@@ -26,9 +26,9 @@ namespace NeraChile.Web.Entities
                 await _dataContext.Database.EnsureCreatedAsync();
                 await CheckRoles();
                 var manager = await CheckUserAsync
-                ("15720044", "Francisco Javier", "Gonzalez", "Uribe", "Fgonzalez@gmail.com", "65380808", "Los escaños 0236", "Puente Alto", "Santiago", "Admin");
+                ("15720044", "Francisco Javier", "Gonzalez", "Uribe", "fgonzalez@gmail.com", "65380808", "Los escaños 0236", "Puente Alto", "Santiago", "Admin");
                 var customer = await CheckUserAsync
-                ("15720044", "Francisco Javier", "Gonzalez", "Uribe", "Fgonzalez@gmail.com", "65380808", "Los escaños 0236", "Puente Alto", "Santiago", "Customer");
+                ("15720044", "Francisco Javier", "Gonzalez", "Uribe", "fgonzalez@hotmail.com", "65380808", "Los escaños 0236", "Puente Alto", "Santiago", "Customer");
                 await CheckManagerAsync(manager);
                 await CheckClienteAsync(customer);
                 
