@@ -35,8 +35,15 @@ namespace NeraChile.Web.Controllers
                     }
                     return RedirectToAction("Index", "Home");
                 }
+                ModelState.AddModelError(String.Empty, "Usuario o Password no validos");
+                model.Password = string.Empty;
             }
             return View(model);
+        }
+        public async Task <IActionResult> Logout()
+        {
+            await _userHelper.LogoutAsync();
+            return RedirectToAction("Index", "Home");
         }
     }
 }

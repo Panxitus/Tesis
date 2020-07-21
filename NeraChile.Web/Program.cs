@@ -26,8 +26,8 @@ namespace NeraChile.Web
             var scopeFactory = host.Services.GetService<IServiceScopeFactory>();
             using (var scope = scopeFactory.CreateScope())
             {
-                //var seeder = scope.ServiceProvider.GetService<SeedDb>();
-                //seeder.SeedAsync().Wait();
+                var seeder = scope.ServiceProvider.GetService<SeedDb>();
+                seeder.SeedAsync().Wait();
             }
         }
 
