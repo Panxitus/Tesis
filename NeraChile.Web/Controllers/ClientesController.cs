@@ -6,16 +6,20 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using NeraChile.Web.Entities;
+using NeraChile.Web.Helpers;
+using NeraChile.Web.Models;
 
 namespace NeraChile.Web.Controllers
 {
     public class ClientesController : Controller
     {
         private readonly DataContext _context;
+        private readonly IUserHelper _userHelper;
 
-        public ClientesController(DataContext context)
+        public ClientesController(DataContext context, IUserHelper userHelper)
         {
             _context = context;
+            _userHelper = userHelper;
         }
 
         // GET: Clientes
@@ -54,15 +58,55 @@ namespace NeraChile.Web.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id")] Cliente cliente)
+        public async Task<IActionResult> Create(AddUserViewModel model)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(cliente);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                var user = new User
+                {
+                    Rut = model.Rut,
+                    Nombre = model.Nombre,
+                    Apellido_Paterno = model.Apellido_Paterno,
+                    Apellido_Materno = model.Apellido_Materno,
+                    Dirección = model.Direccion,
+                    Ciudad = model.Ciudad,
+                    Comuna = model.Comuna,
+                    Telefono = model.Telefono,
+                    UserName = model.Username,
+                    Email = model.Username
+
+
+                };
+                var response = await _userHelper.AddUserAsync(user, model.Password);
+                if (response.Succeeded)
+                {
+                var userInDb = await _userHelper.GetUserByEmailAsync(model.Username);
+                await _userHelper.AddUserToRoleAsync(userInDb, "Customer");
+
+                    var cliente = new Cliente
+                    {
+                        
+                        User = userInDb
+                        
+                    };
+
+                    _context.Clientes.Add(cliente);
+                    try
+                    {
+                        await _context.SaveChangesAsync();
+                        return RedirectToAction(nameof(Index));
+                    }
+                    catch (Exception ex)
+                    {
+
+                        ModelState.AddModelError(string.Empty, ex.ToString());
+                        return View(model);
+                    }
+                
+                }
+                ModelState.AddModelError(string.Empty, response.Errors.FirstOrDefault().Description);
             }
-            return View(cliente);
+            return View(model);
         }
 
         // GET: Clientes/Edit/5

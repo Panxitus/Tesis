@@ -7,7 +7,7 @@
 <h2>Nuevo Empleado</h2>
 
 <p>
-    <a asp-action="Create" class="btn btn-primary">Create New</a>
+    <a asp-action="Create" class="btn btn-primary">Crear Nuevo</a>
 </p>
 <table class="table">
     <thead>
@@ -25,13 +25,7 @@
                 @Html.DisplayNameFor(model => model.User.Apellido_Materno)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.User.Dirección)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.User.Comuna)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.User.Telefono)
+                @Html.DisplayNameFor(model => model.User.Email)
             </th>
         </tr>
     </thead>
@@ -51,13 +45,7 @@
                 @Html.DisplayFor(modelItem => item.User.Apellido_Materno)
             <td>
             <td>
-                @Html.DisplayFor(modelItem => item.User.Dirección)
-            <td>
-            <td>
-                @Html.DisplayFor(modelItem => item.User.Comuna)
-            <td>
-            <td>
-                @Html.DisplayFor(modelItem => item.User.Telefono)
+                @Html.DisplayFor(modelItem => item.User.Email)
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning">Edit</a>
                 <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info">Details</a>
