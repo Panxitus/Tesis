@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -11,21 +12,22 @@ using NeraChile.Web.Models;
 
 namespace NeraChile.Web.Controllers
 {
+    [Authorize (Roles ="Admin")]
     public class ClientesController : Controller
     {
-        private readonly DataContext _context;
+        private readonly DataContext _dataContext;
         private readonly IUserHelper _userHelper;
 
-        public ClientesController(DataContext context, IUserHelper userHelper)
+        public ClientesController(DataContext dataContext, IUserHelper userHelper)
         {
-            _context = context;
+            _dataContext = dataContext;
             _userHelper = userHelper;
         }
 
         // GET: Clientes
         public IActionResult Index()
         {
-            return View (_context.Clientes
+            return View (_dataContext.Clientes
                       .Include(c => c.User));
         }
 
@@ -37,7 +39,9 @@ namespace NeraChile.Web.Controllers
                 return NotFound();
             }
 
-            var cliente = await _context.Clientes
+            var cliente = await _dataContext.Clientes
+                .Include(c => c.User)
+                .Include(c => c.Atencions)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (cliente == null)
             {
@@ -90,10 +94,10 @@ namespace NeraChile.Web.Controllers
                         
                     };
 
-                    _context.Clientes.Add(cliente);
+                    _dataContext.Clientes.Add(cliente);
                     try
                     {
-                        await _context.SaveChangesAsync();
+                        await _dataContext.SaveChangesAsync();
                         return RedirectToAction(nameof(Index));
                     }
                     catch (Exception ex)
@@ -110,19 +114,37 @@ namespace NeraChile.Web.Controllers
         }
 
         // GET: Clientes/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task <IActionResult> Edit(int? Id)
         {
-            if (id == null)
+            if (Id == null)
             {
                 return NotFound();
             }
 
-            var cliente = await _context.Clientes.FindAsync(id);
-            if (cliente == null)
+            var Cliente = await _dataContext.Clientes
+                .Include(o => o.User)
+                .FirstOrDefaultAsync(o => o.Id == Id.Value);
+            if (Cliente == null)
             {
                 return NotFound();
             }
-            return View(cliente);
+
+            var model = new EditUserViewModel
+            {
+                Id = Cliente.Id, 
+                Rut= Cliente.User.Rut,
+                Nombre = Cliente.User.Nombre,
+                Apellido_Paterno = Cliente.User.Apellido_Paterno,
+                Apellido_Materno = Cliente. User.Apellido_Materno,
+                Direccion = Cliente.User.Dirección,
+                Comuna = Cliente.User.Comuna,
+                Ciudad = Cliente.User.Ciudad,
+                Telefono= Cliente.User.Telefono,
+                
+            };
+
+            return View(model);
+
         }
 
         // POST: Clientes/Edit/5
@@ -130,34 +152,33 @@ namespace NeraChile.Web.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id")] Cliente cliente)
+        public async Task <IActionResult> Edit(EditUserViewModel model)
         {
-            if (id != cliente.Id)
             {
-                return NotFound();
+                if (ModelState.IsValid)
+                {
+                    var cliente = await _dataContext.Clientes
+                        .Include(o => o.User)
+                        .FirstOrDefaultAsync(o => o.Id == model.Id);
+
+                   
+                    cliente.User.Rut = model.Rut;
+                    cliente.User.Nombre = model.Nombre;
+                    cliente.User.Apellido_Paterno = model.Apellido_Paterno;
+                    cliente.User.Apellido_Materno = model.Apellido_Materno;
+                    cliente.User.Dirección = model.Direccion;
+                    cliente.User.Comuna = model.Comuna;
+                    cliente.User.Ciudad = model.Ciudad;
+                    cliente.User.Telefono = model.Telefono;
+
+
+                    await _userHelper.UpdateUserAsync(cliente.User);
+                    return RedirectToAction(nameof(Index));
+                }
+
+                return View(model);
             }
 
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(cliente);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!ClienteExists(cliente.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            return View(cliente);
         }
 
         // GET: Clientes/Delete/5
@@ -168,7 +189,7 @@ namespace NeraChile.Web.Controllers
                 return NotFound();
             }
 
-            var cliente = await _context.Clientes
+            var cliente = await _dataContext.Clientes
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (cliente == null)
             {
@@ -183,15 +204,15 @@ namespace NeraChile.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var cliente = await _context.Clientes.FindAsync(id);
-            _context.Clientes.Remove(cliente);
-            await _context.SaveChangesAsync();
+            var cliente = await _dataContext.Clientes.FindAsync(id);
+            _dataContext.Clientes.Remove(cliente);
+            await _dataContext.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool ClienteExists(int id)
         {
-            return _context.Clientes.Any(e => e.Id == id);
+            return _dataContext.Clientes.Any(e => e.Id == id);
         }
     }
 }

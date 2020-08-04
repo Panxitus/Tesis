@@ -10,6 +10,6 @@ namespace NeraChile.Web.Entities
     {
         public int Id { get; set; }
         public User User { get; set; }
-
+        public ICollection<Atencion> Atencions { get; set; }
     }
 }

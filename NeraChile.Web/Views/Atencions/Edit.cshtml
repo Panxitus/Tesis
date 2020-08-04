@@ -1,0 +1,81 @@
+﻿@model NeraChile.Web.Entities.Atencion
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit</h2>
+
+<h4>Atencion</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Hora_de_llamada" class="control-label"></label>
+                <input asp-for="Hora_de_llamada" class="form-control" />
+                <span asp-validation-for="Hora_de_llamada" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Fecha_de_llamada" class="control-label"></label>
+                <input asp-for="Fecha_de_llamada" class="form-control" />
+                <span asp-validation-for="Fecha_de_llamada" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Odometro_inicial" class="control-label"></label>
+                <input asp-for="Odometro_inicial" class="form-control" />
+                <span asp-validation-for="Odometro_inicial" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Tipo_de_servicio" class="control-label"></label>
+                <input asp-for="Tipo_de_servicio" class="form-control" />
+                <span asp-validation-for="Tipo_de_servicio" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Tipo_vehiculo" class="control-label"></label>
+                <input asp-for="Tipo_vehiculo" class="form-control" />
+                <span asp-validation-for="Tipo_vehiculo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Hora_de_llegada" class="control-label"></label>
+                <input asp-for="Hora_de_llegada" class="form-control" />
+                <span asp-validation-for="Hora_de_llegada" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Odometro_de_llegada" class="control-label"></label>
+                <input asp-for="Odometro_de_llegada" class="form-control" />
+                <span asp-validation-for="Odometro_de_llegada" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Observaciones" class="control-label"></label>
+                <input asp-for="Observaciones" class="form-control" />
+                <span asp-validation-for="Observaciones" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Odometro_final" class="control-label"></label>
+                <input asp-for="Odometro_final" class="form-control" />
+                <span asp-validation-for="Odometro_final" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Hora_termino" class="control-label"></label>
+                <input asp-for="Hora_termino" class="form-control" />
+                <span asp-validation-for="Hora_termino" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Estado_del_Servicio" class="control-label"></label>
+                <input asp-for="Estado_del_Servicio" class="form-control" />
+                <span asp-validation-for="Estado_del_Servicio" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

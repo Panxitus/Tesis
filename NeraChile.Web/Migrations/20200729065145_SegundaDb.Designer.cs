@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NeraChile.Web.Entities;
 
 namespace NeraChile.Web.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20200729065145_SegundaDb")]
+    partial class SegundaDb
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -141,25 +143,25 @@ namespace NeraChile.Web.Migrations
 
                     b.Property<DateTime>("Fecha_de_llamada");
 
-                    b.Property<DateTime>("Hora_de_llamada");
-
-                    b.Property<DateTime>("Hora_de_llegada");
-
-                    b.Property<DateTime>("Hora_termino");
-
-                    b.Property<string>("Observaciones");
-
-                    b.Property<int>("Odometro_de_llegada");
-
-                    b.Property<int>("Odometro_final");
-
-                    b.Property<int>("Odometro_inicial");
-
-                    b.Property<string>("Tipo_de_servicio");
-
-                    b.Property<string>("Tipo_vehiculo");
-
                     b.Property<int?>("atencionId");
+
+                    b.Property<DateTime>("hora_de_llamada");
+
+                    b.Property<DateTime>("hora_de_llegada");
+
+                    b.Property<DateTime>("hora_termino");
+
+                    b.Property<string>("observaciones");
+
+                    b.Property<int>("odometro_de_llegada");
+
+                    b.Property<int>("odometro_final");
+
+                    b.Property<int>("odometro_inicial");
+
+                    b.Property<string>("tipo_de_servicio");
+
+                    b.Property<string>("tipo_vehiculo");
 
                     b.HasKey("Id");
 
@@ -167,7 +169,7 @@ namespace NeraChile.Web.Migrations
 
                     b.HasIndex("atencionId");
 
-                    b.ToTable("Atencions");
+                    b.ToTable("Atencion");
                 });
 
             modelBuilder.Entity("NeraChile.Web.Entities.Cliente", b =>

@@ -36,6 +36,9 @@
                     @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
                     {
                         <li><a asp-area="" asp-controller="Clientes" asp-action="Index">Nuevo Empleado</a></li>
+                        <li><a asp-area="" asp-controller="Atencions" asp-action="Index">Atenciones</a></li>
+                        <li><a asp-area="" asp-controller="Propietario" asp-action="Index">Propietarios</a></li>
+
                     }
 
                 </ul>

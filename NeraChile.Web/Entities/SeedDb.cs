@@ -12,10 +12,10 @@ namespace NeraChile.Web.Entities
         private readonly IUserHelper _userHelper;
 
 
-        public SeedDb(DataContext context,
+        public SeedDb(DataContext dataContext,
                        IUserHelper userHelper)
         {
-            _dataContext = context;
+            _dataContext = dataContext;
             _userHelper = userHelper;
         }
 

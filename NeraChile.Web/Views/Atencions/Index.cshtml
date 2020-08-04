@@ -1,0 +1,95 @@
+﻿@model IEnumerable<NeraChile.Web.Entities.Atencion>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Nueva Atención</h2>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Crear Nueva atención</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.atencion.Hora_de_llamada)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.atencion.Fecha_de_llamada)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.atencion.Odometro_inicial)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.atencion.Tipo_de_servicio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.atencion.Tipo_vehiculo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.atencion.Hora_de_llegada)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.atencion.Odometro_de_llegada)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.atencion.Observaciones)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.atencion.Odometro_final)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.atencion.Hora_termino)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.atencion.Estado_del_Servicio)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.atencion.Hora_de_llamada)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.atencion.Fecha_de_llamada)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.atencion.Odometro_inicial)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.atencion.Tipo_de_servicio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.atencion.Tipo_vehiculo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.atencion.Hora_de_llegada)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.atencion.Odometro_de_llegada)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.atencion.Observaciones)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.atencion.Odometro_final)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.atencion.Hora_termino)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.atencion.Estado_del_Servicio)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id"class="btn btn-warning">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id"class="btn btn-info">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id"class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
