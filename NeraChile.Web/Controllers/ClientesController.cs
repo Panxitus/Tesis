@@ -190,25 +190,25 @@ namespace NeraChile.Web.Controllers
             }
 
             var cliente = await _dataContext.Clientes
+                .Include(o =>o.User)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (cliente == null)
             {
                 return NotFound();
             }
 
-            return View(cliente);
+
+            await _userHelper.DeleteUserAsync(cliente.User.Email);
+
+            _dataContext.Clientes.Remove(cliente);
+            await _dataContext.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
         }
 
         // POST: Clientes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var cliente = await _dataContext.Clientes.FindAsync(id);
-            _dataContext.Clientes.Remove(cliente);
-            await _dataContext.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
+       
 
         private bool ClienteExists(int id)
         {
