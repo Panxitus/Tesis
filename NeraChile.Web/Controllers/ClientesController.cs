@@ -41,7 +41,7 @@ namespace NeraChile.Web.Controllers
 
             var cliente = await _dataContext.Clientes
                 .Include(c => c.User)
-                .Include(c => c.Atencions)
+                .Include(c => c.Rescates)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (cliente == null)
             {

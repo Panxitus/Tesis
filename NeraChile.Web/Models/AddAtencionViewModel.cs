@@ -8,7 +8,7 @@ namespace NeraChile.Web.Models
 {
     public class AddAtencionViewModel
     {
-        [Required(ErrorMessage = "El ID es obligatorio.")]
+        [Required(ErrorMessage = "El Id es obligatorio.")]
         public int Id { get; set; }
 
         [Display(Name = "Ingrese hora de Llamada")]

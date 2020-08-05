@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace NeraChile.Web.Entities
 {
-    public class Atencion
+    public class Rescate
     {
         public int Id { get; set; }
 
@@ -43,6 +43,13 @@ namespace NeraChile.Web.Entities
         [Display(Name = "Ingrese Estado del Servicio")]
         public string Estado_del_Servicio { get; set; }
 
-        public Atencion atencion { get; set; }
+        public Autopista Autopista { get; set; }
+
+        public Propietario Propietario { get; set; }
+
+        public TipoVehiculo TipoVehiculo { get; set; }
+
+        public ICollection <Registro> Registros { get; set; }
+        
     }
 }
