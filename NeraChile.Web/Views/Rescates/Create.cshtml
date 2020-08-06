@@ -1,0 +1,78 @@
+﻿@model NeraChile.Web.Entities.Rescate
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Create</h2>
+
+<h4>Rescate</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Date" class="control-label"></label>
+                <input asp-for="Date" class="form-control" />
+                <span asp-validation-for="Date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Odometro_inicial" class="control-label"></label>
+                <input asp-for="Odometro_inicial" class="form-control" />
+                <span asp-validation-for="Odometro_inicial" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Tipo_de_servicio" class="control-label"></label>
+                <select for="TipoServicio" class="form-control" name="TipoServicio">
+                    <option value="Seleccionar">Seleccionar</option>
+                    <option value="Accidente">Accidente</option>
+                    <option value="Incidente">Incidente</option>
+                    <option value="Asistencia">Asistencia</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Tipo_vehiculo" class="control-label"></label>
+               <select for="TipoVehiculo" class="form-control" name="TipoVehiculo">
+                  <option value="Seleccionar">Seleccionar</option>
+                  <option value="Grúa Liviana">Grúa Liviana</option>
+                  <option value="Grúa Pesada">Grúa Pesada</option>
+                  <option value="Patrulla">Patrulla</option>
+                  <option value="Ambulancia">Ambulancia</option>
+                  <option value="Vehículos de Rescate">Vehículos de Rescate</option>
+                  <option value="Motocicleta">Motocicleta</option>
+                  <option value="VehículoSupervisor">Vehículo Supervisor</option>
+               </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Odometro_de_llegada" class="control-label"></label>
+                <input asp-for="Odometro_de_llegada" class="form-control" />
+                <span asp-validation-for="Odometro_de_llegada" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Observaciones" class="control-label"></label>
+                <input asp-for="Observaciones" class="form-control" />
+                <span asp-validation-for="Observaciones" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Odometro_final" class="control-label"></label>
+                <input asp-for="Odometro_final" class="form-control" />
+                <span asp-validation-for="Odometro_final" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Estado_del_Servicio" class="control-label"></label>
+                <select for="EstServicio" class="form-control" name="EstServicio">
+                    <option value="Seleccionar">Seleccionar</option>
+                    <option value="Finalizado">Finalizado</option>
+                    <option value="Pendiente">Pendiente</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Guardar" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-success">Volver</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+

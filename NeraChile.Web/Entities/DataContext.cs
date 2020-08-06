@@ -17,7 +17,7 @@ namespace NeraChile.Web.Entities
 
         public DbSet<Cliente> Clientes { get; set; }
         public DbSet<Manager> Managers { get; set; }
-        public DbSet<Rescate> Atencions { get; set;}
+        public DbSet<Rescate> Rescate { get; set;}
         public DbSet<Propietario> Propietarios { get; set; }
         public DbSet<TipoVehiculo> Vehiculos { get; set; }
         

@@ -37,12 +37,13 @@
                     {
                         <li><a asp-area="" asp-controller="Clientes" asp-action="Index">Nuevo Empleado</a></li>
                         <li><a asp-area="" asp-controller="Rescates" asp-action="Index">Rescate</a></li>
-                        <li><a asp-area="" asp-controller="Propietario" asp-action="Index">Propietarios</a></li>
-                        <li><a asp-area="" asp-controller="Vehiculo" asp-action="Index">Vehiculos</a></li>
+
+
                     }
                     @if (User.Identity.IsAuthenticated && User.IsInRole("Customer"))
                     {
                         <li><a asp-area="" asp-controller="Rescates" asp-action="Index">Rescate</a></li>
+                      
                     }
 
                 </ul>

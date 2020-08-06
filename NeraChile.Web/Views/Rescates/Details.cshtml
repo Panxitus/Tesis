@@ -1,0 +1,66 @@
+﻿@model NeraChile.Web.Entities.Rescate
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Detalles</h2>
+<div>
+    <h4>Rescate</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Odometro_inicial)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Odometro_inicial)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Tipo_de_servicio)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Tipo_de_servicio)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Tipo_vehiculo)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Tipo_vehiculo)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Odometro_de_llegada)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Odometro_de_llegada)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Observaciones)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Observaciones)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Odometro_final)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Odometro_final)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Estado_del_Servicio)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Estado_del_Servicio)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Editar</a> |
+    <a asp-action="Index" class="btn btn-success">Volver</a>
+</div>
+

@@ -1,0 +1,64 @@
+﻿@model NeraChile.Web.Entities.Rescate
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Editar</h2>
+
+<h4>Rescate</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Date" class="control-label"></label>
+                <input asp-for="Date" class="form-control" />
+                <span asp-validation-for="Date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Odometro_inicial" class="control-label"></label>
+                <input asp-for="Odometro_inicial" class="form-control" />
+                <span asp-validation-for="Odometro_inicial" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Tipo_de_servicio" class="control-label"></label>
+                <input asp-for="Tipo_de_servicio" class="form-control" />
+                <span asp-validation-for="Tipo_de_servicio" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Tipo_vehiculo" class="control-label"></label>
+                <input asp-for="Tipo_vehiculo" class="form-control" />
+                <span asp-validation-for="Tipo_vehiculo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Odometro_de_llegada" class="control-label"></label>
+                <input asp-for="Odometro_de_llegada" class="form-control" />
+                <span asp-validation-for="Odometro_de_llegada" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Observaciones" class="control-label"></label>
+                <input asp-for="Observaciones" class="form-control" />
+                <span asp-validation-for="Observaciones" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Odometro_final" class="control-label"></label>
+                <input asp-for="Odometro_final" class="form-control" />
+                <span asp-validation-for="Odometro_final" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Estado_del_Servicio" class="control-label"></label>
+                <input asp-for="Estado_del_Servicio" class="form-control" />
+                <span asp-validation-for="Estado_del_Servicio" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Guardar" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-success">Volver</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+

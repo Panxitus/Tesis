@@ -1,0 +1,57 @@
+﻿@model NeraChile.Web.Entities.Propietario
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Propietario</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Rut)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Rut)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Celular)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Celular)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Correo_Electronico)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Correo_Electronico)
+        </dd>
+        <dt>
+           # Rescates
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Rescates.Count)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Editar" class="btn btn-warning">Editar</a>
+    <a asp-action="AgregarFormulario" class="btn btn-primary">Formulario</a>
+    <a asp-action="Index" class="btn btn-success">Volver</a>
+</div>
+@if (Model.Rescates.Count == 0)
+{
+ <h4>No hay formularios</h4>
+}
+else
+{
+<h4> Formularios Encontrados</h4>
+}

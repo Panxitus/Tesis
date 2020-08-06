@@ -1,10 +1,10 @@
-﻿@model IEnumerable<NeraChile.Web.Entities.Cliente>
+﻿@model IEnumerable<NeraChile.Web.Entities.Rescate>
 
 @{
     ViewData["Title"] = "Index";
 }
 
-<h2>Nuevo Empleado</h2>
+<h2>Nuevo Rescate</h2>
 
 <p>
     <a asp-action="Create" class="btn btn-primary">Crear Nuevo</a>
@@ -13,19 +13,25 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.User.Rut)
+                @Html.DisplayNameFor(model => model.Date)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.User.Nombre)
+                @Html.DisplayNameFor(model => model.Odometro_inicial)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.User.Apellido_Paterno)
+                @Html.DisplayNameFor(model => model.Tipo_de_servicio)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.User.Apellido_Materno)
+                @Html.DisplayNameFor(model => model.Tipo_vehiculo)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.User.Email)
+                @Html.DisplayNameFor(model => model.Odometro_de_llegada)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Odometro_final)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Estado_del_Servicio)
             </th>
             <th></th>
         </tr>
@@ -35,25 +41,30 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.User.Rut)
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
                 <td>
+                    @Html.DisplayFor(modelItem => item.Odometro_inicial)
+                </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.User.Nombre)
+                    @Html.DisplayFor(modelItem => item.Tipo_de_servicio)
+                </td>
                 <td>
+                    @Html.DisplayFor(modelItem => item.Tipo_vehiculo)
+                </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.User.Apellido_Paterno)
+                    @Html.DisplayFor(modelItem => item.Odometro_de_llegada)
+                </td>
                 <td>
+                    @Html.DisplayFor(modelItem => item.Odometro_final)
+                </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.User.Apellido_Materno)
-                <td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.User.Email)
-                <td>
+                    @Html.DisplayFor(modelItem => item.Estado_del_Servicio)
+                </td>
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning">Editar</a>
                     <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info">Detalles</a>
                     <button data-id="@item.Id" class="btn btn-danger deleteItem" data-toggle="modal" data-target="#deleteDialog">Delete</button>
-
                 </td>
             </tr>
         }
@@ -76,9 +87,8 @@
             });
 
             $("#btnYesDelete").click(function () {
-                window.location.href = '/Clientes/Delete/' + item_to_delete;
+                window.location.href = '/Rescate/DeleteRescate/' + item_to_delete;
             });
         });
     </script>
-
-}
+    }
