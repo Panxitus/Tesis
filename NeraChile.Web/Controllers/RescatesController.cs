@@ -11,7 +11,7 @@ using NeraChile.Web.Helpers;
 
 namespace NeraChile.Web.Controllers
 {
-    [Authorize(Roles = "Admin")]
+   
     public class RescatesController : Controller
     {
         private readonly DataContext _dataContext;

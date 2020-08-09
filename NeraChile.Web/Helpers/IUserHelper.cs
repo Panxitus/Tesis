@@ -19,7 +19,7 @@ namespace NeraChile.Web.Helpers
             Task LogoutAsync();
             Task<IdentityResult> UpdateUserAsync(User user);
             Task<bool> DeleteUserAsync(string email);
-
+            
 
         }
 }

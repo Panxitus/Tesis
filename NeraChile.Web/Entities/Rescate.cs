@@ -13,7 +13,7 @@ namespace NeraChile.Web.Entities
 
         [Display (Name = "Ingrese Fecha y Hora de Solicitud")]
         [DataType(DataType.DateTime)]
-        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime Date { get; set; }
 
         [Display(Name = "Odometro Inicial")]
@@ -28,7 +28,6 @@ namespace NeraChile.Web.Entities
         [Display(Name = "Ingrese odometro ")]
         public int Odometro_de_llegada { get; set; }
 
-        
         public string Observaciones { get; set; }
 
         [Display(Name = "Ingrese Odometro")]
@@ -46,7 +45,7 @@ namespace NeraChile.Web.Entities
         public ICollection <Registro> Registros { get; set; }
 
         [Display(Name = "hora")]
-        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime Datelocal => Date.ToLocalTime();
 
     }
