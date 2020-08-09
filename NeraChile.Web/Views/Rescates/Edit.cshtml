@@ -24,14 +24,26 @@
                 <span asp-validation-for="Odometro_inicial" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Tipo_de_servicio" class="control-label"></label>
-                <input asp-for="Tipo_de_servicio" class="form-control" />
-                <span asp-validation-for="Tipo_de_servicio" class="text-danger"></span>
+                <label asp-for="Tipo_de_servicio"  class="control-label"></label>
+                <select for="Rescate" class="form-control" name="Tipo_de_servicio">
+                    <option value="Seleccionar">Seleccionar</option>
+                    <option value="Accidente">Accidente</option>
+                    <option value="Incidente">Incidente</option>
+                    <option value="Asistencia">Asistencia</option>
+                </select>
             </div>
             <div class="form-group">
                 <label asp-for="Tipo_vehiculo" class="control-label"></label>
-                <input asp-for="Tipo_vehiculo" class="form-control" />
-                <span asp-validation-for="Tipo_vehiculo" class="text-danger"></span>
+               <select for="Tipo_vehiculo" class="form-control" name="Tipo_vehiculo">
+                  <option value="Seleccionar">Seleccionar</option>
+                  <option value="Grúa Liviana">Grúa Liviana</option>
+                  <option value="Grúa Pesada">Grúa Pesada</option>
+                  <option value="Patrulla">Patrulla</option>
+                  <option value="Ambulancia">Ambulancia</option>
+                  <option value="Vehículos de Rescate">Vehículos de Rescate</option>
+                  <option value="Motocicleta">Motocicleta</option>
+                  <option value="VehículoSupervisor">Vehículo Supervisor</option>
+               </select>
             </div>
             <div class="form-group">
                 <label asp-for="Odometro_de_llegada" class="control-label"></label>
@@ -50,8 +62,11 @@
             </div>
             <div class="form-group">
                 <label asp-for="Estado_del_Servicio" class="control-label"></label>
-                <input asp-for="Estado_del_Servicio" class="form-control" />
-                <span asp-validation-for="Estado_del_Servicio" class="text-danger"></span>
+                <select for="Estado_del_Servicio" class="form-control" name="Estado_del_Servicio">
+                    <option value="Seleccionar">Seleccionar</option>
+                    <option value="Finalizado">Finalizado</option>
+                    <option value="Pendiente">Pendiente</option>
+                </select>
             </div>
             <div class="form-group">
                 <input type="submit" value="Guardar" class="btn btn-primary" />

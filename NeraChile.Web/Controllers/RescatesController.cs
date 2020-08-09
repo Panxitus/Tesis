@@ -123,6 +123,8 @@ namespace NeraChile.Web.Controllers
         }
 
         // GET: Rescates/Delete/5
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteRescate (int? id)
         {
             if (id == null)
@@ -138,13 +140,14 @@ namespace NeraChile.Web.Controllers
             }
             _dataContext.Rescate.Remove(rescate);
             await _dataContext.SaveChangesAsync();
-            return RedirectToAction($"{nameof(rescate)}/{rescate.Id}");
+            //return RedirectToAction($"{nameof(rescate)}/{rescate.Id}");
+            //return null;
+            return RedirectToAction("Index", "Rescates");
         }
 
         // POST: Rescates/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-
         private bool RescateExists(int id)
         {
             return _dataContext.Rescate.Any(e => e.Id == id);
