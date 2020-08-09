@@ -25,7 +25,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Tipo_de_servicio"  class="control-label"></label>
-                <select for="Rescate" class="form-control" name="Tipo_de_servicio">
+                <select asp-for="Tipo_de_servicio" for="Rescate" class="form-control" name="Tipo_de_servicio">
                     <option value="Seleccionar">Seleccionar</option>
                     <option value="Accidente">Accidente</option>
                     <option value="Incidente">Incidente</option>
@@ -34,7 +34,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Tipo_vehiculo" class="control-label"></label>
-               <select for="Tipo_vehiculo" class="form-control" name="Tipo_vehiculo">
+               <select asp-for="Tipo_vehiculo" for="Tipo_vehiculo" class="form-control" name="Tipo_vehiculo">
                   <option value="Seleccionar">Seleccionar</option>
                   <option value="Grúa Liviana">Grúa Liviana</option>
                   <option value="Grúa Pesada">Grúa Pesada</option>
@@ -62,7 +62,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Estado_del_Servicio" class="control-label"></label>
-                <select for="Estado_del_Servicio" class="form-control" name="Estado_del_Servicio">
+                <select asp-for="Estado_del_Servicio" for="Estado_del_Servicio" class="form-control" name="Estado_del_Servicio">
                     <option value="Seleccionar">Seleccionar</option>
                     <option value="Finalizado">Finalizado</option>
                     <option value="Pendiente">Pendiente</option>
