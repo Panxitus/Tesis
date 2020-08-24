@@ -25,12 +25,12 @@ namespace NeraChile.Web.Entities
         [Display(Name = "vehículo Utilizado")]
         public string Tipo_vehiculo { get; set; }
 
-        [Display(Name = "Ingrese odometro ")]
+        [Display(Name = "Odometro salida atención ")]
         public int Odometro_de_llegada { get; set; }
 
         public string Observaciones { get; set; }
 
-        [Display(Name = "Ingrese Odometro")]
+        [Display(Name = "Odometro llegada base")]
         public int Odometro_final { get; set; }
 
         [Display(Name = "Ingrese Estado del Servicio")]

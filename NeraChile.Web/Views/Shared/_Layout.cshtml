@@ -76,6 +76,42 @@
         <script src="~/lib/jquery/dist/jquery.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
         <script src="~/js/site.js" asp-append-version="true"></script>
+        
+        <script src="~/js/jquery.rut.js"></script>
+        <script type="text/javascript">
+      $(function() {
+        $("#rut").rut({formatOn: 'keyup', 
+        validateOn: 'keyup'
+        }).on('rutInvalido', 
+        function(){
+            rut.setCustomValidity("RUT Inválido");
+            $(".form-rut").addClass("has-danger")
+            $(".input-rut").addClass("form-control-danger")  
+        }).on('rutValido', 
+        function(){ 
+            $(".form-rut").removeClass("has-danger")
+            $(".form-rut").addClass("has-success")
+            $(".input-rut").removeClass("form-control-danger")
+            $(".input-rut").addClass("form-control-success")
+            rut.setCustomValidity('')
+        });
+      });
+            $('#nom').on('input', function() {
+                var value = $(this).val();
+                if(value.length >= 5){
+                    $(".form-nom").removeClass("has-danger")
+                    $(".form-nom").addClass("has-success")
+                    $(".input-nom").removeClass("form-control-danger")
+                    $(".input-nom").addClass("form-control-success")
+                    nom.setCustomValidity('')
+                }
+                if(value.length >= 0 && value.length < 5){
+                    nom.setCustomValidity("El Nombre debe tener mas de 5 caracteres");
+                    $(".form-nom").addClass("has-danger")
+                    $(".input-nom").addClass("form-control-danger")    
+                }
+        });
+    </script>
     </environment>
     <environment exclude="Development">
         <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"
@@ -91,6 +127,7 @@
                 integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd">
         </script>
         <script src="~/js/site.min.js" asp-append-version="true"></script>
+        <script src="~/js/jquery.rut.min.js"></script>
     </environment>
 
     @RenderSection("Scripts", required: false)

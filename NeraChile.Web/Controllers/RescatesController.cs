@@ -64,9 +64,19 @@ namespace NeraChile.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                _dataContext.Add(rescate);
-                await _dataContext.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                if(rescate.Odometro_inicial <= rescate.Odometro_de_llegada){
+                    if (rescate.Odometro_de_llegada <= rescate.Odometro_final){
+                        _dataContext.Add(rescate);
+                        await _dataContext.SaveChangesAsync();
+                        return RedirectToAction(nameof(Index));
+                    }else{
+                           //Console.WriteLine("Odometro invalido");
+                            throw new Exception();
+                    }
+                }else{
+                       //Console.WriteLine("Odometro invalido");
+                        throw new Exception();
+                }
             }
             return View(rescate);
         }

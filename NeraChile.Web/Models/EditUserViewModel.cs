@@ -10,7 +10,7 @@ namespace NeraChile.Web.Models
     {
         public int Id { get; set; }
 
-        [StringLength(11, MinimumLength = 10, ErrorMessage = "El Rut no es valido.")]
+        [StringLength(12, MinimumLength = 11, ErrorMessage = "El Rut no es valido.")]
         [Required(ErrorMessage = "El Rut es obligatorio.")]
         public string Rut { get; set; }
 
