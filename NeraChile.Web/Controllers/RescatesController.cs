@@ -62,6 +62,7 @@ namespace NeraChile.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Date,Odometro_inicial,Tipo_de_servicio,Tipo_vehiculo,Odometro_de_llegada,Observaciones,Odometro_final,Estado_del_Servicio")] Rescate rescate)
         {
+            var message = string.Format("Debe corregir Odometros");
             if (ModelState.IsValid)
             {
                 if(rescate.Odometro_inicial <= rescate.Odometro_de_llegada){
@@ -70,12 +71,10 @@ namespace NeraChile.Web.Controllers
                         await _dataContext.SaveChangesAsync();
                         return RedirectToAction(nameof(Index));
                     }else{
-                           //Console.WriteLine("Odometro invalido");
-                            throw new Exception();
+                        // Mensage
                     }
                 }else{
-                       //Console.WriteLine("Odometro invalido");
-                        throw new Exception();
+                    // Mensage
                 }
             }
             return View(rescate);
